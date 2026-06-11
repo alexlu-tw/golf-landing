@@ -6,7 +6,7 @@ LINE 高爾夫計分系統的行銷單頁網站，純 HTML/CSS/JS，部署於 Gi
 
 | 檔案 | 用途 |
 |---|---|
-| `index.html` | 單頁主結構 (Hero / 兩種玩法 / 功能 / 賭局 / 如何開始 / CTA) |
+| `index.html` | 單頁主結構 (Hero / 兩種玩法 / 功能 / 賽局 / 如何開始 / CTA) |
 | `styles.css` | 全部樣式，響應式 + reveal 動畫 |
 | `script.js` | 中英語言切換、行動版選單、scroll reveal |
 | `CNAME` | GitHub Pages 自訂網域 (`tintin.tw`) |
