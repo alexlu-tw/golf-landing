@@ -44,7 +44,7 @@ const I18N = {
     how_3_t: 'Play, score, auto-settle', how_3_d: 'Enter scores hole by hole; bets and handicaps compute themselves and push results at the end.',
 
     cta_title: 'Ready to level up your outings?',
-    cta_sub: 'To bring GolfScore to your group or learn about plans, get in touch.',
+    cta_sub: 'To bring TinTin Golf to your group or learn about plans, get in touch.',
     cta_btn1: 'Contact us', cta_btn2: 'View the system',
 
     footer_tag: 'LINE golf scoring · betting · handicap system',
