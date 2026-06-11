@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>高球計分 GolfScore — LINE 高爾夫計分・賭局・差點系統</title>
+  <meta name="description" content="不用安裝 App，直接在 LINE 裡記分。支援錦標賽多組賽事、休閒揪團、即時記分卡、Skin／1對1／2對2 賭局、AI 自訂規則與新新貝利亞差點。" />
+  <meta name="theme-color" content="#2d9e51" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="高球計分 GolfScore — LINE 高爾夫計分系統" />
+  <meta property="og:description" content="不用安裝 App，直接在 LINE 裡記分、開賭局、算差點。" />
+  <meta property="og:url" content="https://tintin.tw/" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ───────────────────────── Nav ───────────────────────── -->
+  <header class="nav" id="nav">
+    <div class="container nav-inner">
+      <a href="#top" class="brand">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 21V4l9 3-9 3" /><path d="M5 21h6" />
+          </svg>
+        </span>
+        <span class="brand-name">高球計分<span class="brand-en">GolfScore</span></span>
+      </a>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#modes" data-i18n="nav_modes">兩種玩法</a>
+        <a href="#features" data-i18n="nav_features">功能</a>
+        <a href="#betting" data-i18n="nav_betting">賭局</a>
+        <a href="#how" data-i18n="nav_how">如何開始</a>
+        <a href="#cta" class="nav-cta" data-i18n="nav_try">免費試用</a>
+      </nav>
+
+      <div class="nav-right">
+        <button class="lang-toggle" id="langToggle" aria-label="Switch language">
+          <span class="lang-zh">中文</span><span class="lang-sep">|</span><span class="lang-en">EN</span>
+        </button>
+        <button class="nav-burger" id="navBurger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ───────────────────────── Hero ───────────────────────── -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-copy reveal">
+          <span class="pill" data-i18n="hero_pill">🏌️ 100% 在 LINE 裡運作・免下載</span>
+          <h1 data-i18n="hero_title">在 LINE 裡<br>記分、開賭局、算差點</h1>
+          <p class="hero-sub" data-i18n="hero_sub">把整個高爾夫球敘搬進 LINE 官方帳號。即時記分卡、自動賭局結算、新新貝利亞差點排行——隊友打開 LINE 就能用，不必再裝一個 App。</p>
+          <div class="hero-actions">
+            <a href="#cta" class="btn btn-primary" data-i18n="hero_cta1">免費開始</a>
+            <a href="#features" class="btn btn-ghost" data-i18n="hero_cta2">看看功能 ↓</a>
+          </div>
+          <div class="hero-trust">
+            <span data-i18n="hero_trust1">✓ 無需安裝</span>
+            <span data-i18n="hero_trust2">✓ 中／英雙語</span>
+            <span data-i18n="hero_trust3">✓ 即時同步</span>
+          </div>
+        </div>
+
+        <!-- Phone mockup -->
+        <div class="hero-phone reveal">
+          <div class="phone">
+            <div class="phone-notch"></div>
+            <div class="phone-screen">
+              <div class="pscore-head">
+                <span data-i18n="phone_round">六月球敘 · 18洞</span>
+              </div>
+              <table class="pscore">
+                <thead>
+                  <tr class="ph-row"><th></th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th></tr>
+                  <tr class="pp-row"><th></th><td>4</td><td>3</td><td>5</td><td>4</td><td>4</td><td>4</td></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="pa">A</td>
+                    <td><span class="sc filled-c">1</span></td>
+                    <td><span class="sc dbl-c">2</span></td>
+                    <td><span class="sc thin-c">4</span></td>
+                    <td><span class="sc par">4</span></td>
+                    <td><span class="sc thin-s">5</span></td>
+                    <td><span class="sc dbl-s">6</span></td>
+                  </tr>
+                  <tr>
+                    <td class="pa">B</td>
+                    <td><span class="sc par">4</span></td>
+                    <td><span class="sc thin-c">2</span></td>
+                    <td><span class="sc dbl-s">7</span></td>
+                    <td><span class="sc par">4</span></td>
+                    <td><span class="sc thin-s">5</span></td>
+                    <td><span class="sc par">4</span></td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="pchip-row">
+                <span class="pchip win">A +$300</span>
+                <span class="pchip lose">B −$300</span>
+              </div>
+            </div>
+          </div>
+          <div class="phone-glow"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ───────────────────────── Modes ───────────────────────── -->
+    <section class="section" id="modes">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2 data-i18n="modes_title">兩種球敘，一套系統</h2>
+          <p data-i18n="modes_sub">無論是正式錦標賽，還是週末揪團，都能對應。</p>
+        </div>
+        <div class="mode-grid">
+          <div class="mode-card mode-tournament reveal">
+            <div class="mode-tag" data-i18n="mode_t_tag">錦標賽隊伍</div>
+            <h3 data-i18n="mode_t_title">多組賽事・團隊競賽</h3>
+            <p data-i18n="mode_t_desc">隊長建立多組(flight)賽事，全場以「新新貝利亞」計算差點與排行。支援 LINE 聊天室直接報成績，或用記分卡輸入。</p>
+            <ul class="mode-list">
+              <li data-i18n="mode_t_1">多組分組與開球順序管理</li>
+              <li data-i18n="mode_t_2">全場差點排行榜</li>
+              <li data-i18n="mode_t_3">隊長／球員角色權限</li>
+              <li data-i18n="mode_t_4">LINE 聊天室報分</li>
+            </ul>
+          </div>
+          <div class="mode-card mode-casual reveal">
+            <div class="mode-tag" data-i18n="mode_c_tag">休閒揪團</div>
+            <h3 data-i18n="mode_c_title">隨揪隨打・專注賭局</h3>
+            <p data-i18n="mode_c_desc">任何成員都能開單組球局，掃 QR 邀請好友加入。即時記分卡、自動賭局結算，結束自動推播輸贏結果。</p>
+            <ul class="mode-list">
+              <li data-i18n="mode_c_1">任何人都能開局</li>
+              <li data-i18n="mode_c_2">QR 碼邀請入局</li>
+              <li data-i18n="mode_c_3">自動賭局結算與推播</li>
+              <li data-i18n="mode_c_4">虛擬球員 / 訪客</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ───────────────────────── Features ───────────────────────── -->
+    <section class="section section-tint" id="features">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2 data-i18n="feat_title">為高爾夫球敘量身打造</h2>
+          <p data-i18n="feat_sub">從報分到結算，每個細節都想過了。</p>
+        </div>
+        <div class="feature-grid">
+          <div class="feature reveal">
+            <div class="feature-ic">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+            </div>
+            <h3 data-i18n="feat_1_t">LINE 原生體驗</h3>
+            <p data-i18n="feat_1_d">透過 LINE 官方帳號與 LIFF 運作，隊友不必下載任何 App，點開 LINE 就能記分。</p>
+          </div>
+          <div class="feature reveal">
+            <div class="feature-ic">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+            </div>
+            <h3 data-i18n="feat_2_t">專業記分卡</h3>
+            <p data-i18n="feat_2_d">大師賽風格圖示——博蒂圈、柏忌方框一眼判讀。即時同步，所有人同步看見每洞成績。</p>
+          </div>
+          <div class="feature reveal">
+            <div class="feature-ic">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M12 8v8M8 12h8"/></svg>
+            </div>
+            <h3 data-i18n="feat_3_t">自動賭局結算</h3>
+            <p data-i18n="feat_3_d">Skin、1對1、2對2 多種賭法，自動算點數與金額，每洞輸贏、carry、博蒂加成全自動。</p>
+          </div>
+          <div class="feature reveal">
+            <div class="feature-ic">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.8H20l-4.9 3.6 1.9 5.8L12 14.6 7 18.2l1.9-5.8L4 8.8h6.1z"/></svg>
+            </div>
+            <h3 data-i18n="feat_4_t">AI 自訂賭局規則</h3>
+            <p data-i18n="feat_4_d">用講的就能設定你家的特殊賭法——AI 聽懂規則、自動產生結算邏輯，再奇怪的玩法都能算。</p>
+          </div>
+          <div class="feature reveal">
+            <div class="feature-ic">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg>
+            </div>
+            <h3 data-i18n="feat_5_t">差點與排行榜</h3>
+            <p data-i18n="feat_5_d">內建新新貝利亞(New New Peoria)差點計算，全場淨桿排行一目了然。</p>
+          </div>
+          <div class="feature reveal">
+            <div class="feature-ic">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg>
+            </div>
+            <h3 data-i18n="feat_6_t">中英雙語</h3>
+            <p data-i18n="feat_6_d">介面、推播訊息全面支援繁體中文與英文，一鍵切換。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ───────────────────────── Betting ───────────────────────── -->
+    <section class="section" id="betting">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2 data-i18n="bet_title">把計較留給系統</h2>
+          <p data-i18n="bet_sub">常見賭法內建，特殊玩法交給 AI。</p>
+        </div>
+        <div class="bet-grid">
+          <div class="bet-card reveal">
+            <span class="bet-badge">Skin</span>
+            <h3 data-i18n="bet_skin_t">Skin 比洞</h3>
+            <p data-i18n="bet_skin_d">2–8 人，每洞最低桿者獨贏；平手 carry 到下一洞累積。可加博蒂／老鷹加成。</p>
+          </div>
+          <div class="bet-card reveal">
+            <span class="bet-badge">1 v 1</span>
+            <h3 data-i18n="bet_one_t">1 對 1 Scratch</h3>
+            <p data-i18n="bet_one_d">兩人對戰，依差點指數分配讓桿，每洞勝者得分，可設每點金額。</p>
+          </div>
+          <div class="bet-card reveal">
+            <span class="bet-badge">2 v 2</span>
+            <h3 data-i18n="bet_best_t">2 對 2 總和</h3>
+            <p data-i18n="bet_best_d">兩兩一隊，低球對低球、總和對總和雙重比拚，單一 carry 累積。</p>
+          </div>
+          <div class="bet-card bet-ai reveal">
+            <span class="bet-badge ai">AI</span>
+            <h3 data-i18n="bet_ai_t">AI 自訂規則</h3>
+            <p data-i18n="bet_ai_d">用自然語言描述你的特殊賭法，AI 即時生成結算邏輯。拉斯維加斯、自訂 carry⋯⋯都行。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ───────────────────────── How it works ───────────────────────── -->
+    <section class="section section-dark" id="how">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2 data-i18n="how_title">三步驟，立刻上場</h2>
+          <p data-i18n="how_sub">幾分鐘就能讓整個球敘群組動起來。</p>
+        </div>
+        <div class="step-grid">
+          <div class="step reveal">
+            <div class="step-num">1</div>
+            <h3 data-i18n="how_1_t">加入 LINE 官方帳號</h3>
+            <p data-i18n="how_1_d">球敘群組加入專屬的 LINE 官方帳號，系統自動配置選單。</p>
+          </div>
+          <div class="step reveal">
+            <div class="step-num">2</div>
+            <h3 data-i18n="how_2_t">建立球局・邀請球友</h3>
+            <p data-i18n="how_2_d">選好球場、開局，分享 QR 碼讓球友一掃即加入。</p>
+          </div>
+          <div class="step reveal">
+            <div class="step-num">3</div>
+            <h3 data-i18n="how_3_t">打球・記分・自動結算</h3>
+            <p data-i18n="how_3_d">逐洞輸入成績，賭局與差點自動計算，結束推播輸贏結果。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ───────────────────────── CTA ───────────────────────── -->
+    <section class="cta" id="cta">
+      <div class="container cta-inner reveal">
+        <h2 data-i18n="cta_title">準備好讓你的球敘升級了嗎？</h2>
+        <p data-i18n="cta_sub">想為你的球敘群組導入 GolfScore，或了解方案，歡迎與我們聯絡。</p>
+        <div class="cta-actions">
+          <a href="mailto:hello@tintin.tw" class="btn btn-primary" data-i18n="cta_btn1">聯絡我們</a>
+          <a href="https://golf.tintin.tw" class="btn btn-ghost-light" data-i18n="cta_btn2">查看系統</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ───────────────────────── Footer ───────────────────────── -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="brand-name">高球計分<span class="brand-en">GolfScore</span></span>
+        <p data-i18n="footer_tag">LINE 高爾夫計分・賭局・差點系統</p>
+      </div>
+      <div class="footer-links">
+        <a href="#modes" data-i18n="nav_modes">兩種玩法</a>
+        <a href="#features" data-i18n="nav_features">功能</a>
+        <a href="#betting" data-i18n="nav_betting">賭局</a>
+        <a href="mailto:hello@tintin.tw">Email</a>
+      </div>
+      <p class="footer-copy">© <span id="year"></span> GolfScore · tintin.tw</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
