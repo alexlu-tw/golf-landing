@@ -1,299 +1,231 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>婷婷小球秘 — LINE 高爾夫計分・賽局・差點系統 | TinTin Golf</title>
-  <meta name="description" content="婷婷小球秘：不用安裝 App，直接在 LINE 裡記分。支援錦標賽多組賽事、休閒揪團、即時記分卡、Skin／1對1／2對2 賽局、AI 自訂規則與新新貝利亞差點。" />
-  <meta name="theme-color" content="#1f3a5c" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#1F3A5C" />
+<title>婷婷小球秘 — LINE 高爾夫計分・賽局・差點系統 | TinTin Golf</title>
+<meta name="description" content="婷婷小球秘：不用安裝 App，直接在 LINE 裡記分。支援錦標賽多組賽事、休閒揪團、即時記分卡、Skin／1對1／2對2 賽局、AI 自訂規則與新新貝利亞差點。" />
+<link rel="canonical" href="https://tintin.tw/" />
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png" />
+<link rel="shortcut icon" href="assets/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
+<link rel="manifest" href="assets/site.webmanifest" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://tintin.tw/" />
+<meta property="og:title" content="婷婷小球秘 — LINE 高爾夫計分系統 | TinTin Golf" />
+<meta property="og:description" content="不用安裝 App，直接在 LINE 裡記分、開賽局、算差點。" />
+<meta property="og:image" content="https://tintin.tw/assets/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="婷婷小球秘 — LINE 高爾夫計分系統 | TinTin Golf" />
+<meta name="twitter:description" content="不用安裝 App，直接在 LINE 裡記分、開賽局、算差點。" />
+<meta name="twitter:image" content="https://tintin.tw/assets/og-image.png" />
+<style>
+  :root{
+    --navy:#1F3A5C; --navy-d:#16293f; --olive:#5E6E3A; --olive-d:#47532b;
+    --win:#5F8D72; --lose:#B07A76; --ink:#1A1A1A; --muted:#5A6470;
+    --paper:#F7F8F6; --line:#E3E7E1;
+    --grad:linear-gradient(110deg,var(--navy) 0%,var(--navy) 28%,#3a5340 62%,var(--olive) 100%);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:-apple-system,"Helvetica Neue","PingFang TC","Microsoft JhengHei",sans-serif;color:var(--ink);background:#fff;line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+  header.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.86);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800}
+  .brand .mark{width:32px;height:32px;border-radius:50%;display:block}
+  .brand small{display:block;font-weight:500;color:var(--muted);font-size:11px;letter-spacing:.04em}
+  nav.links{display:flex;gap:26px;font-size:14px;color:var(--muted)}
+  nav.links a:hover{color:var(--navy)}
+  .btn{display:inline-block;padding:11px 22px;border-radius:999px;font-weight:700;font-size:14px;transition:.18s}
+  .btn-navy{background:var(--navy);color:#fff}.btn-navy:hover{background:var(--navy-d)}
+  @media(max-width:760px){nav.links{display:none}}
 
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
-  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+  .hero{background:var(--grad);color:#fff;position:relative;overflow:hidden}
+  .hero::after{content:"";position:absolute;inset:0;background:radial-gradient(800px 400px at 50% -10%,rgba(255,255,255,.10),transparent 60%);pointer-events:none}
+  .hero-top{position:relative;z-index:2;text-align:center;padding:70px 24px 14px}
+  .hero-top .kick{display:inline-flex;gap:8px;align-items:center;font-size:13px;font-weight:700;border:1px solid rgba(255,255,255,.4);padding:7px 16px;border-radius:999px;margin-bottom:24px}
+  .hero-top h1{font-size:clamp(30px,5.4vw,56px);font-weight:800;letter-spacing:-.01em;line-height:1.12}
+  .hero-top p{opacity:.88;font-size:clamp(15px,2vw,18px);max-width:620px;margin:16px auto 0}
+  .hero-cols{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:1px;padding:46px 0 64px;max-width:1100px;margin:0 auto}
+  .hero-cols::before{content:"";position:absolute;top:60px;bottom:90px;left:50%;width:1px;background:rgba(255,255,255,.22)}
+  .hero-side{padding:8px 48px;display:flex;flex-direction:column;justify-content:center}
+  .hero-side.left{align-items:flex-start}
+  .hero-side .tag{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.08em;opacity:.9;border:1px solid rgba(255,255,255,.4);padding:5px 12px;border-radius:999px;margin-bottom:18px;width:fit-content}
+  .hero-side h2{font-size:26px;line-height:1.25;margin-bottom:12px;font-weight:800}
+  .hero-side p{font-size:14.5px;opacity:.92;margin-bottom:18px;max-width:320px}
+  .hero-side ul{list-style:none;font-size:14px;opacity:.94;margin-bottom:24px}
+  .hero-side li{padding:4px 0;padding-left:22px;position:relative}
+  .hero-side li::before{content:"✓";position:absolute;left:0;font-weight:800}
+  .hero-side .btn{background:#fff;color:var(--ink);width:fit-content}
+  @media(max-width:760px){
+    .hero-cols{grid-template-columns:1fr;gap:34px;padding:36px 0 52px}
+    .hero-cols::before{display:none}
+    .hero-side{padding:0 28px}
+  }
 
-  <!-- Open Graph -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="婷婷小球秘 — LINE 高爾夫計分系統 | TinTin Golf" />
-  <meta property="og:description" content="不用安裝 App，直接在 LINE 裡記分、開賽局、算差點。" />
-  <meta property="og:url" content="https://tintin.tw/" />
+  .demo{background:var(--paper);padding:60px 0;border-bottom:1px solid var(--line)}
+  .card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;max-width:560px;margin:0 auto;box-shadow:0 12px 40px rgba(31,58,92,.08)}
+  .card h4{font-size:13px;color:var(--muted);margin-bottom:14px;font-weight:700}
+  table.sc{width:100%;border-collapse:collapse;font-size:13px;text-align:center}
+  table.sc th,table.sc td{padding:7px 4px;border:1px solid var(--line)}
+  table.sc thead th{background:#DFE4EA}
+  table.sc .par td{background:#EEF1F5;color:var(--muted)}
+  .chip{display:inline-block;width:24px;height:24px;line-height:24px}
+  .under{border:1.6px solid var(--navy);border-radius:50%}
+  .over{border:1.6px solid var(--navy);border-radius:5px}
+  .res{display:flex;gap:10px;justify-content:center;margin-top:16px;font-weight:700;font-size:14px}
+  .res .w{color:var(--win)}.res .l{color:var(--lose)}
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+  section{padding:84px 0}
+  .eyebrow{color:var(--olive);font-weight:800;font-size:13px;letter-spacing:.1em;text-transform:uppercase;text-align:center}
+  h3.sec{font-size:clamp(26px,3.6vw,38px);text-align:center;font-weight:800;margin:8px 0 10px}
+  .lead{text-align:center;color:var(--muted);max-width:600px;margin:0 auto 48px}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  @media(max-width:860px){.grid3,.grid2{grid-template-columns:1fr}}
+  .feat{border:1px solid var(--line);border-radius:16px;padding:26px;transition:.18s;background:#fff}
+  .feat:hover{transform:translateY(-4px);box-shadow:0 14px 34px rgba(31,58,92,.09);border-color:transparent}
+  .feat .ic{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;font-size:20px;margin-bottom:14px;background:#EEF1F5;color:var(--navy)}
+  .feat h5{font-size:17px;margin-bottom:8px}.feat p{font-size:14px;color:var(--muted)}
+  .modecard{border-radius:20px;padding:36px;color:#fff}
+  .modecard.t{background:linear-gradient(155deg,var(--navy),var(--navy-d))}
+  .modecard.c{background:linear-gradient(155deg,var(--olive),var(--olive-d))}
+  .modecard .k{font-size:12px;font-weight:700;letter-spacing:.08em;opacity:.8}
+  .modecard h4{font-size:22px;margin:8px 0 12px}.modecard p{font-size:14px;opacity:.92;margin-bottom:18px}
+  .modecard ul{list-style:none;font-size:14px}
+  .modecard li{padding:5px 0 5px 22px;position:relative;opacity:.95}
+  .modecard li::before{content:"›";position:absolute;left:4px;font-weight:800}
+  .bet{background:var(--paper)}
+  .betgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  @media(max-width:860px){.betgrid{grid-template-columns:1fr 1fr}}
+  @media(max-width:520px){.betgrid{grid-template-columns:1fr}}
+  .betcard{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px}
+  .betcard .badge{display:inline-block;font-size:12px;font-weight:800;color:var(--olive);background:#EEF3EF;padding:4px 10px;border-radius:8px;margin-bottom:12px}
+  .betcard h5{font-size:16px;margin-bottom:8px}.betcard p{font-size:13px;color:var(--muted)}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+  @media(max-width:860px){.steps{grid-template-columns:1fr}}
+  .step .n{width:42px;height:42px;border-radius:50%;background:var(--grad);color:#fff;display:grid;place-items:center;font-weight:800;margin-bottom:14px}
+  .step h5{font-size:17px;margin-bottom:6px}.step p{font-size:14px;color:var(--muted)}
+  .cta{background:var(--grad);color:#fff;text-align:center}
+  .cta h3{font-size:clamp(26px,3.6vw,36px);font-weight:800;margin-bottom:14px}
+  .cta p{opacity:.9;max-width:520px;margin:0 auto 28px}
+  .cta .btn{background:#fff;color:var(--navy);margin:0 6px}
+  .cta .btn.alt{background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.4)}
+  footer{background:var(--navy-d);color:#cdd6e2;padding:48px 0;font-size:14px}
+  .foot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:18px}
+  footer .brand{color:#fff}footer a{color:#cdd6e2}footer a:hover{color:#fff}
+  .copy{opacity:.6;font-size:12px;margin-top:18px}
+</style>
 </head>
-<body>
+<body id="top">
+<header class="nav"><div class="wrap nav-in">
+  <a href="#top" class="brand"><img class="mark" src="assets/logo-mark.svg" alt="" width="32" height="32" /><span>婷婷小球秘<small>TinTin Golf</small></span></a>
+  <nav class="links"><a href="#modes">兩種玩法</a><a href="#features">功能</a><a href="#betting">賽局</a><a href="#how">如何開始</a></nav>
+  <a href="#cta" class="btn btn-navy">免費開始</a>
+</div></header>
 
-  <!-- ───────────────────────── Nav ───────────────────────── -->
-  <header class="nav" id="nav">
-    <div class="container nav-inner">
-      <a href="#top" class="brand">
-        <img class="brand-img" src="assets/logo-mark.svg" alt="TinTin Golf" width="36" height="36" />
-        <span class="brand-name">婷婷小球秘<span class="brand-en">TinTin Golf</span></span>
-      </a>
-
-      <nav class="nav-links" id="navLinks">
-        <a href="#modes" data-i18n="nav_modes">兩種玩法</a>
-        <a href="#features" data-i18n="nav_features">功能</a>
-        <a href="#betting" data-i18n="nav_betting">賽局</a>
-        <a href="#how" data-i18n="nav_how">如何開始</a>
-        <a href="#cta" class="nav-cta" data-i18n="nav_try">免費試用</a>
-      </nav>
-
-      <div class="nav-right">
-        <button class="lang-toggle" id="langToggle" aria-label="Switch language">
-          <span class="lang-zh">中文</span><span class="lang-sep">|</span><span class="lang-en">EN</span>
-        </button>
-        <button class="nav-burger" id="navBurger" aria-label="Menu">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
+<div class="hero">
+  <div class="hero-top">
+    <span class="kick">🏌️ 100% 在 LINE 裡運作・免下載</span>
+    <h1>一套系統，兩種球敘</h1>
+    <p>把整個高爾夫球敘搬進 LINE 官方帳號。即時記分卡、自動賽局結算、新新貝利亞差點排行——隊友打開 LINE 就能用。</p>
+  </div>
+  <div class="hero-cols">
+    <div class="hero-side left">
+      <span class="tag">錦標賽隊伍 · TOURNAMENT</span>
+      <h2>多組賽事・團隊競賽</h2>
+      <p>隊長建立多組賽事，全場以新新貝利亞計算差點與排行。</p>
+      <ul><li>多組分組與開球順序</li><li>全場差點排行榜</li><li>隊長／球員權限</li><li>LINE 聊天室報分</li></ul>
+      <a href="#cta" class="btn">了解錦標賽 →</a>
     </div>
-  </header>
-
-  <main id="top">
-
-    <!-- ───────────────────────── Hero ───────────────────────── -->
-    <section class="hero">
-      <div class="container hero-inner">
-        <div class="hero-copy reveal">
-          <span class="pill" data-i18n="hero_pill">🏌️ 100% 在 LINE 裡運作・免下載</span>
-          <h1 data-i18n="hero_title">在 LINE 裡<br>記分、開賽局、算差點</h1>
-          <p class="hero-sub" data-i18n="hero_sub">把整個高爾夫球敘搬進 LINE 官方帳號。即時記分卡、自動賽局結算、新新貝利亞差點排行——隊友打開 LINE 就能用，不必再裝一個 App。</p>
-          <div class="hero-actions">
-            <a href="#cta" class="btn btn-primary" data-i18n="hero_cta1">免費開始</a>
-            <a href="#features" class="btn btn-ghost" data-i18n="hero_cta2">看看功能 ↓</a>
-          </div>
-          <div class="hero-trust">
-            <span data-i18n="hero_trust1">✓ 無需安裝</span>
-            <span data-i18n="hero_trust2">✓ 中／英雙語</span>
-            <span data-i18n="hero_trust3">✓ 即時同步</span>
-          </div>
-        </div>
-
-        <!-- Phone mockup -->
-        <div class="hero-phone reveal">
-          <div class="phone">
-            <div class="phone-notch"></div>
-            <div class="phone-screen">
-              <div class="pscore-head">
-                <span data-i18n="phone_round">六月球敘 · 18洞</span>
-              </div>
-              <table class="pscore">
-                <thead>
-                  <tr class="ph-row"><th></th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th></tr>
-                  <tr class="pp-row"><th></th><td>4</td><td>3</td><td>5</td><td>4</td><td>4</td><td>4</td></tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td class="pa">A</td>
-                    <td><span class="sc filled-c">1</span></td>
-                    <td><span class="sc dbl-c">2</span></td>
-                    <td><span class="sc thin-c">4</span></td>
-                    <td><span class="sc par">4</span></td>
-                    <td><span class="sc thin-s">5</span></td>
-                    <td><span class="sc dbl-s">6</span></td>
-                  </tr>
-                  <tr>
-                    <td class="pa">B</td>
-                    <td><span class="sc par">4</span></td>
-                    <td><span class="sc thin-c">2</span></td>
-                    <td><span class="sc dbl-s">7</span></td>
-                    <td><span class="sc par">4</span></td>
-                    <td><span class="sc thin-s">5</span></td>
-                    <td><span class="sc par">4</span></td>
-                  </tr>
-                </tbody>
-              </table>
-              <div class="pchip-row">
-                <span class="pchip win">A +$300</span>
-                <span class="pchip lose">B −$300</span>
-              </div>
-            </div>
-          </div>
-          <div class="phone-glow"></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ───────────────────────── Modes ───────────────────────── -->
-    <section class="section" id="modes">
-      <div class="container">
-        <div class="section-head reveal">
-          <h2 data-i18n="modes_title">兩種球敘，一套系統</h2>
-          <p data-i18n="modes_sub">無論是正式錦標賽，還是週末揪團，都能對應。</p>
-        </div>
-        <div class="mode-grid">
-          <div class="mode-card mode-tournament reveal">
-            <div class="mode-tag" data-i18n="mode_t_tag">錦標賽隊伍</div>
-            <h3 data-i18n="mode_t_title">多組賽事・團隊競賽</h3>
-            <p data-i18n="mode_t_desc">隊長建立多組(flight)賽事，全場以「新新貝利亞」計算差點與排行。支援 LINE 聊天室直接報成績，或用記分卡輸入。</p>
-            <ul class="mode-list">
-              <li data-i18n="mode_t_1">多組分組與開球順序管理</li>
-              <li data-i18n="mode_t_2">全場差點排行榜</li>
-              <li data-i18n="mode_t_3">隊長／球員角色權限</li>
-              <li data-i18n="mode_t_4">LINE 聊天室報分</li>
-            </ul>
-          </div>
-          <div class="mode-card mode-casual reveal">
-            <div class="mode-tag" data-i18n="mode_c_tag">休閒揪團</div>
-            <h3 data-i18n="mode_c_title">隨揪隨打・專注賽局</h3>
-            <p data-i18n="mode_c_desc">任何成員都能開單組球局，掃 QR 邀請好友加入。即時記分卡、自動賽局結算，結束自動推播輸贏結果。</p>
-            <ul class="mode-list">
-              <li data-i18n="mode_c_1">任何人都能開局</li>
-              <li data-i18n="mode_c_2">QR 碼邀請入局</li>
-              <li data-i18n="mode_c_3">自動賽局結算與推播</li>
-              <li data-i18n="mode_c_4">虛擬球員 / 訪客</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ───────────────────────── Features ───────────────────────── -->
-    <section class="section section-tint" id="features">
-      <div class="container">
-        <div class="section-head reveal">
-          <h2 data-i18n="feat_title">為高爾夫球敘量身打造</h2>
-          <p data-i18n="feat_sub">從報分到結算，每個細節都想過了。</p>
-        </div>
-        <div class="feature-grid">
-          <div class="feature reveal">
-            <div class="feature-ic">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
-            </div>
-            <h3 data-i18n="feat_1_t">LINE 原生體驗</h3>
-            <p data-i18n="feat_1_d">透過 LINE 官方帳號與 LIFF 運作，隊友不必下載任何 App，點開 LINE 就能記分。</p>
-          </div>
-          <div class="feature reveal">
-            <div class="feature-ic">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-            </div>
-            <h3 data-i18n="feat_2_t">專業記分卡</h3>
-            <p data-i18n="feat_2_d">大師賽風格圖示——博蒂圈、柏忌方框一眼判讀。即時同步，所有人同步看見每洞成績。</p>
-          </div>
-          <div class="feature reveal">
-            <div class="feature-ic">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M12 8v8M8 12h8"/></svg>
-            </div>
-            <h3 data-i18n="feat_3_t">自動賽局結算</h3>
-            <p data-i18n="feat_3_d">Skin、1對1、2對2 多種賽局，自動算點數與金額，每洞輸贏、carry、博蒂加成全自動。</p>
-          </div>
-          <div class="feature reveal">
-            <div class="feature-ic">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.8H20l-4.9 3.6 1.9 5.8L12 14.6 7 18.2l1.9-5.8L4 8.8h6.1z"/></svg>
-            </div>
-            <h3 data-i18n="feat_4_t">AI 自訂賽局規則</h3>
-            <p data-i18n="feat_4_d">用講的就能設定你家的特殊賽局——AI 聽懂規則、自動產生結算邏輯，再奇怪的玩法都能算。</p>
-          </div>
-          <div class="feature reveal">
-            <div class="feature-ic">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg>
-            </div>
-            <h3 data-i18n="feat_5_t">差點與排行榜</h3>
-            <p data-i18n="feat_5_d">內建新新貝利亞(New New Peoria)差點計算，全場淨桿排行一目了然。</p>
-          </div>
-          <div class="feature reveal">
-            <div class="feature-ic">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg>
-            </div>
-            <h3 data-i18n="feat_6_t">中英雙語</h3>
-            <p data-i18n="feat_6_d">介面、推播訊息全面支援繁體中文與英文，一鍵切換。</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ───────────────────────── Betting ───────────────────────── -->
-    <section class="section" id="betting">
-      <div class="container">
-        <div class="section-head reveal">
-          <h2 data-i18n="bet_title">把計較留給系統</h2>
-          <p data-i18n="bet_sub">常見賽局內建，特殊玩法交給 AI。</p>
-        </div>
-        <div class="bet-grid">
-          <div class="bet-card reveal">
-            <span class="bet-badge">Skin</span>
-            <h3 data-i18n="bet_skin_t">Skin 比洞</h3>
-            <p data-i18n="bet_skin_d">2–8 人，每洞最低桿者獨贏；平手 carry 到下一洞累積。可加博蒂／老鷹加成。</p>
-          </div>
-          <div class="bet-card reveal">
-            <span class="bet-badge">1 v 1</span>
-            <h3 data-i18n="bet_one_t">1 對 1 Scratch</h3>
-            <p data-i18n="bet_one_d">兩人對戰，依差點指數分配讓桿，每洞勝者得分，可設每點金額。</p>
-          </div>
-          <div class="bet-card reveal">
-            <span class="bet-badge">2 v 2</span>
-            <h3 data-i18n="bet_best_t">2 對 2 總和</h3>
-            <p data-i18n="bet_best_d">兩兩一隊，低球對低球、總和對總和雙重比拚，單一 carry 累積。</p>
-          </div>
-          <div class="bet-card bet-ai reveal">
-            <span class="bet-badge ai">AI</span>
-            <h3 data-i18n="bet_ai_t">AI 自訂規則</h3>
-            <p data-i18n="bet_ai_d">用自然語言描述你的特殊賽局，AI 即時生成結算邏輯。拉斯維加斯、自訂 carry⋯⋯都行。</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ───────────────────────── How it works ───────────────────────── -->
-    <section class="section section-dark" id="how">
-      <div class="container">
-        <div class="section-head reveal">
-          <h2 data-i18n="how_title">三步驟，立刻上場</h2>
-          <p data-i18n="how_sub">幾分鐘就能讓整個球敘群組動起來。</p>
-        </div>
-        <div class="step-grid">
-          <div class="step reveal">
-            <div class="step-num">1</div>
-            <h3 data-i18n="how_1_t">加入 LINE 官方帳號</h3>
-            <p data-i18n="how_1_d">球敘群組加入專屬的 LINE 官方帳號，系統自動配置選單。</p>
-          </div>
-          <div class="step reveal">
-            <div class="step-num">2</div>
-            <h3 data-i18n="how_2_t">建立球局・邀請球友</h3>
-            <p data-i18n="how_2_d">選好球場、開局，分享 QR 碼讓球友一掃即加入。</p>
-          </div>
-          <div class="step reveal">
-            <div class="step-num">3</div>
-            <h3 data-i18n="how_3_t">打球・記分・自動結算</h3>
-            <p data-i18n="how_3_d">逐洞輸入成績，賽局與差點自動計算，結束推播輸贏結果。</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ───────────────────────── CTA ───────────────────────── -->
-    <section class="cta" id="cta">
-      <div class="container cta-inner reveal">
-        <h2 data-i18n="cta_title">準備好讓你的球敘升級了嗎？</h2>
-        <p data-i18n="cta_sub">想為你的球敘群組導入 婷婷小球秘，或了解方案，歡迎與我們聯絡。</p>
-        <div class="cta-actions">
-          <a href="mailto:hello@tintin.tw" class="btn btn-primary" data-i18n="cta_btn1">聯絡我們</a>
-          <a href="https://golf.tintin.tw" class="btn btn-ghost-light" data-i18n="cta_btn2">查看系統</a>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- ───────────────────────── Footer ───────────────────────── -->
-  <footer class="footer">
-    <div class="container footer-inner">
-      <div class="footer-brand">
-        <span class="brand-name">婷婷小球秘<span class="brand-en">TinTin Golf</span></span>
-        <p data-i18n="footer_tag">LINE 高爾夫計分・賽局・差點系統</p>
-      </div>
-      <div class="footer-links">
-        <a href="#modes" data-i18n="nav_modes">兩種玩法</a>
-        <a href="#features" data-i18n="nav_features">功能</a>
-        <a href="#betting" data-i18n="nav_betting">賽局</a>
-        <a href="mailto:hello@tintin.tw">Email</a>
-      </div>
-      <p class="footer-copy">© <span id="year"></span> TinTin Golf 婷婷高球運動行銷 · tintin.tw</p>
+    <div class="hero-side right">
+      <span class="tag">休閒揪團 · CASUAL</span>
+      <h2>隨揪隨打・專注賽局</h2>
+      <p>任何成員都能開單組球局，掃 QR 邀請好友，結束自動推播輸贏。</p>
+      <ul><li>任何人都能開局</li><li>QR 碼邀請入局</li><li>自動賽局結算</li><li>虛擬球員 / 訪客</li></ul>
+      <a href="#cta" class="btn">了解揪團 →</a>
     </div>
-  </footer>
+  </div>
+</div>
 
-  <script src="script.js"></script>
+<div class="demo"><div class="wrap">
+  <div class="card">
+    <h4>六月球敘 · 18 洞</h4>
+    <table class="sc">
+      <thead><tr><th></th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th></tr></thead>
+      <tbody>
+        <tr class="par"><td>Par</td><td>4</td><td>3</td><td>5</td><td>4</td><td>4</td><td>4</td></tr>
+        <tr><td>A</td><td><span class="chip under">3</span></td><td><span class="chip under">2</span></td><td><span class="chip under">4</span></td><td>4</td><td><span class="chip over">5</span></td><td>4</td></tr>
+        <tr><td>B</td><td>4</td><td><span class="chip under">2</span></td><td><span class="chip over">7</span></td><td>4</td><td><span class="chip over">5</span></td><td>4</td></tr>
+      </tbody>
+    </table>
+    <div class="res"><span class="w">A +3 分</span><span class="l">B −3 分</span></div>
+  </div>
+</div></div>
+
+<section id="modes"><div class="wrap">
+  <p class="eyebrow">兩種球敘</p>
+  <h3 class="sec">正式錦標賽，還是週末揪團？</h3>
+  <p class="lead">一套系統都能對應，切換產品型態只在一個開關之間。</p>
+  <div class="grid2">
+    <div class="modecard t"><div class="k">TOURNAMENT TEAM</div><h4>錦標賽隊伍</h4><p>多組分組、團隊競賽，全場以新新貝利亞計算差點與排行。</p>
+      <ul><li>多組分組與開球順序管理</li><li>全場差點排行榜</li><li>隊長／球員角色權限</li><li>LINE 聊天室報分</li></ul></div>
+    <div class="modecard c"><div class="k">CASUAL GROUP</div><h4>休閒揪團</h4><p>隨揪隨打，掃 QR 邀請好友加入，結束自動推播輸贏。</p>
+      <ul><li>任何人都能開局</li><li>QR 碼邀請入局</li><li>自動賽局結算與推播</li><li>虛擬球員 / 訪客</li></ul></div>
+  </div>
+</div></section>
+
+<section id="features" style="background:var(--paper)"><div class="wrap">
+  <p class="eyebrow">功能</p><h3 class="sec">為高爾夫球敘量身打造</h3><p class="lead">從報分到結算，每個細節都想過了。</p>
+  <div class="grid3">
+    <div class="feat"><div class="ic">💬</div><h5>LINE 原生體驗</h5><p>透過 LINE 官方帳號與 LIFF 運作，點開 LINE 就能記分，不必下載 App。</p></div>
+    <div class="feat"><div class="ic">📋</div><h5>專業記分卡</h5><p>大師賽風格圖示——博蒂圈、柏忌方框一眼判讀，即時同步。</p></div>
+    <div class="feat"><div class="ic">🧮</div><h5>自動賽局結算</h5><p>Skin、1對1、2對2，每洞輸贏、carry、博蒂加成全自動。</p></div>
+    <div class="feat"><div class="ic">🤖</div><h5>AI 自訂賽局規則</h5><p>用講的就能設定特殊賽局，AI 聽懂並自動產生結算邏輯。</p></div>
+    <div class="feat"><div class="ic">🏆</div><h5>差點與排行榜</h5><p>內建新新貝利亞差點計算，全場淨桿排行一目了然。</p></div>
+    <div class="feat"><div class="ic">🌐</div><h5>中英雙語</h5><p>介面與推播訊息全面支援繁中與英文，一鍵切換。</p></div>
+  </div>
+</div></section>
+
+<section id="betting" class="bet"><div class="wrap">
+  <p class="eyebrow">賽局</p><h3 class="sec">把計較留給系統</h3><p class="lead">常見賽局內建，特殊玩法交給 AI。</p>
+  <div class="betgrid">
+    <div class="betcard"><span class="badge">Skin</span><h5>Skin 比洞</h5><p>2–8 人，每洞最低桿者獨贏；平手 carry 累積，可加博蒂／老鷹加成。</p></div>
+    <div class="betcard"><span class="badge">1 v 1</span><h5>1 對 1 Scratch</h5><p>兩人對戰，依差點指數分配讓桿，每洞勝者得分，可設每點金額。</p></div>
+    <div class="betcard"><span class="badge">2 v 2</span><h5>2 對 2 總和</h5><p>兩兩一隊，低球對低球、總和對總和雙重比拚，單一 carry 累積。</p></div>
+    <div class="betcard"><span class="badge">AI</span><h5>AI 自訂規則</h5><p>用自然語言描述特殊賽局，AI 即時生成結算邏輯。</p></div>
+  </div>
+</div></section>
+
+<section id="how"><div class="wrap">
+  <p class="eyebrow">如何開始</p><h3 class="sec">三步驟，立刻上場</h3><p class="lead">幾分鐘就能讓整個球敘群組動起來。</p>
+  <div class="steps">
+    <div class="step"><div class="n">1</div><h5>加入 LINE 官方帳號</h5><p>球敘群組加入專屬的 LINE 官方帳號，系統自動配置選單。</p></div>
+    <div class="step"><div class="n">2</div><h5>建立球局・邀請球友</h5><p>選好球場、開局，分享 QR 碼讓球友一掃即加入。</p></div>
+    <div class="step"><div class="n">3</div><h5>打球・記分・結算</h5><p>逐洞輸入成績，賽局與差點自動計算，結束推播輸贏。</p></div>
+  </div>
+</div></section>
+
+<section id="cta" class="cta"><div class="wrap">
+  <h3>準備好讓你的球敘升級了嗎？</h3>
+  <p>想為你的球敘群組導入婷婷小球秘，或了解方案，歡迎與我們聯絡。</p>
+  <a href="https://lin.ee/rrs0TcS" target="_blank" rel="noopener" class="btn">加入官方帳號</a><a href="mailto:hello@tintin.tw" class="btn alt">聯絡我們</a>
+</div></section>
+
+<footer><div class="wrap">
+  <div class="foot">
+    <div class="brand"><img class="mark" src="assets/logo-mark.svg" alt="" width="32" height="32" style="border-radius:50%" /><span>婷婷小球秘<small style="color:#9fb0c4">TinTin Golf</small></span></div>
+    <nav style="display:flex;gap:22px"><a href="#modes">兩種玩法</a><a href="#features">功能</a><a href="#betting">賽局</a><a href="mailto:hello@tintin.tw">Email</a></nav>
+  </div>
+  <div class="copy">© <span id="yr"></span> TinTin Golf 婷婷高球運動行銷 · tintin.tw</div>
+</div></footer>
+<script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
 </body>
 </html>
