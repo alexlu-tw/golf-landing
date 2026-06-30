@@ -12,6 +12,12 @@
     "updated": "2026-06-30"
   },
   {
+    "slug": "equity-lw",
+    "title": "[lightweight] 三腿 vs SPY vs SPXL · +251%/+182%/+442% · 2019-26",
+    "desc": "lightweight-charts 版(對照 Plotly 'equity')· 領先SPY +69%pp · 左緣=100",
+    "updated": "2026-07-01"
+  },
+  {
     "slug": "gate",
     "title": "Sleeve A gate · SPY (54% in 3x) · 2016-26",
     "desc": "SPY + SMA20/200,紅色 = 在 3x(SPXL)的區段",
