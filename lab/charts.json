@@ -34,5 +34,11 @@
     "title": "Rebalance policy · 3-sleeve · cost 5bps · 2019-26",
     "desc": "再平衡觸發比較:A腿翻轉 vs band 3/5/10% · 含 5bps 週轉成本 · 左緣=100",
     "updated": "2026-06-30"
+  },
+  {
+    "slug": "spy-ta",
+    "title": "SPY 技術面 + 三腿 · SPY +182% / 三腿 +251% · 2019-26",
+    "desc": "SPY K線(起點=100)+ MA5/20/50/200 · 疊三腿槓桿/報酬分段線 · 下方 RSI-2(10/90)、成交量",
+    "updated": "2026-07-01"
   }
 ]
